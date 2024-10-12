@@ -18,11 +18,11 @@ export class User {
 
 class UserController {
   static async save(user) {
-    return UserModel.create(user).then(console.log(`create ${user.telegramId}`));
+    return await UserModel.create(user).then(console.log(`create ${user.telegramId}`));
   }
 
   static async update(user) {
-    return UserModel.updateOne(user).then(console.log(`update ${user.telegramId}`));
+    return await UserModel.updateOne(user).then(console.log(`update ${user.telegramId}`));
   }
 
   static async findAll() {

@@ -29,8 +29,8 @@ const stage = new Stage([calScene]);
 bot.use(session());
 bot.use(stage.middleware());
 
-bot.start((ctx) => {
-  ctx.scene.enter('cal');
+bot.start(async (ctx) => {
+  await ctx.scene.enter('cal');
 });
 
 async function updateCal(ctx, cal) {
@@ -59,8 +59,6 @@ bot.command('me', async (ctx) => {
   const user = await UserController.findByTelegramId(ctx.message.from.id);
   ctx.sendMessage(user);
 });
-
-UserController.resetAllCal();
 
 cron.schedule(
   '0 0 * * *',

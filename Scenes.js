@@ -13,7 +13,7 @@ class SceneGenerator {
         const user = new User(ctx.message.from.id, currCal);
         UserController.save(user);
         await ctx.reply('Сохранил');
-        cal.leave();
+        ctx.scene.leave();
       }
     });
     return cal;
