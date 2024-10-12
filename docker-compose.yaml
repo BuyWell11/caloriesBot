@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mongo:
+    container_name: mongo_bot
+    image: mongo:6.0.3
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: femboy
+      MONGO_INITDB_ROOT_PASSWORD: femboy1488
+      MONGO_INITDB_DATABASE: fatdb
+
+  app:
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    restart: always
+    environment:
+      MONGODB_URI: ${MONGODB_URI}
+      TG_TOKEN: ${TG_TOKEN}
